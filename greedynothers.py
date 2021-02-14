@@ -58,7 +58,7 @@ def shaking_random(clusters, matrix, total_parts):
             new_solution = combine_clusters(clusters, first, last)
         num_of_clusters = len(set(custers[0]))
         local_optimal = calculate_clusters(new_solution, matrix, total_parts)
-        if local_optimal < prev_optimal:
+        if local_optimal > prev_optimal:
             best_solution = new_solution
         prev_optimal = local_optimal
         repeats_left += 1
@@ -73,7 +73,7 @@ def shaking_with_local(clusters, matrix, total_parts):
     for i in range(num_of_clusters):
         new_solution = divide_clusters(clusters, i, num_of_clusters - 1)
         local_optimal = calculate_clusters(new_solution, matrix, total_parts)
-        if local_optimal < prev_optimal:
+        if local_optimal > prev_optimal:
             best_solution = new_solution
             print("Best", best_solution)
             print("Len best", local_optimal)
@@ -84,7 +84,7 @@ def shaking_with_local(clusters, matrix, total_parts):
         for j in range(i + 1, num_of_clusters - 1):
             new_solution = combine_clusters(clusters, i, j)
             local_optimal = calculate_clusters(new_solution, matrix, total_parts)
-            if local_optimal < prev_optimal:
+            if local_optimal > prev_optimal:
                 best_solution = new_solution
             print("Best", best_solution)
             print("Len best", local_optimal)
@@ -101,7 +101,7 @@ def shaking(clusters, matrix, total_parts):
     for i in range(num_of_clusters):
         new_solution = divide_clusters(clusters, i, num_of_clusters - 1)
         local_optimal = calculate_clusters(new_solution, matrix, total_parts)
-        if local_optimal < optimal:
+        if local_optimal > optimal:
             best_solution = new_solution
             print("Best", best_solution)
             print("Len best", local_optimal)
@@ -111,7 +111,7 @@ def shaking(clusters, matrix, total_parts):
         for j in range(i + 1, num_of_clusters - 1):
             new_solution = combine_clusters(clusters, i, j)
             local_optimal = calculate_clusters(new_solution, matrix, total_parts)
-            if local_optimal < optimal:
+            if local_optimal > optimal:
                 best_solution = new_solution
                 print("Best", best_solution)
                 print("Len best", local_optimal)
@@ -241,4 +241,3 @@ if __name__ == '__main__':
     print(clusters)
     print(calculate_clusters(clusters, matrix, total_parts))
     print(GDNS(clusters, matrix, total_parts))
-    
