@@ -68,7 +68,7 @@ def shaking_random(clusters, matrix, total_parts):
 def shaking_with_local(clusters, matrix, total_parts):
     local_optimal = optimal = calculate_clusters(clusters, matrix, total_parts)
     new_solution = best_solution = 0
-    prev_optimal = 1
+    prev_optimal = 0
     num_of_clusters = len(set(clusters[0]))
     for i in range(num_of_clusters):
         new_solution = divide_clusters(clusters, i, num_of_clusters - 1)
